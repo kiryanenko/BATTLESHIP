@@ -42,7 +42,7 @@ public class ShipControls : MonoBehaviour
 
 	private void Turn()
 	{
-		var torque = Torque * SideAxis * _rigidbody.velocity.magnitude;
+		var torque = Torque * SideAxis * _rigidbody.velocity.magnitude + Torque * SideAxis;
 		_rigidbody.AddRelativeTorque(Vector3.left * torque);
 	}
 

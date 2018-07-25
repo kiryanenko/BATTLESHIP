@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shell : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		Destroy(gameObject, 3f);
-	}
+public class Shell : MonoBehaviour
+{
+	public float TimeLive = 3f;
+	public GameObject Explosion;
 	
-	// Update is called once per frame
-	void Update () {
-		
+	// Use this for initialization
+	private void Start () {
+		Destroy(gameObject, TimeLive);
+	}
+
+	private void OnCollisionEnter(Collision other)
+	{
+		Instantiate(Explosion, transform.position, transform.rotation);
+		Destroy(gameObject);
 	}
 }
