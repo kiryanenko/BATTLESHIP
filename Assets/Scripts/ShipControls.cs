@@ -16,6 +16,9 @@ public class ShipControls : MonoBehaviour
 
 	private Rigidbody _rigidbody;
 
+	private float _boostBonusEndTime;
+	private float _boost = 1;
+
 	
 	// Use this for initialization
 	private void Start ()
@@ -26,6 +29,7 @@ public class ShipControls : MonoBehaviour
 	private void Update()
 	{
 		TurnTurrets();
+		BonusesHandler();
 	}
 
 	private void FixedUpdate()
@@ -36,7 +40,7 @@ public class ShipControls : MonoBehaviour
 
 	private void Move()
 	{
-		var trust = Thrust * ForwardAxis;
+		var trust = Thrust * ForwardAxis * _boost;
 		_rigidbody.AddRelativeForce(Vector3.forward * trust);
 	}
 
@@ -60,5 +64,19 @@ public class ShipControls : MonoBehaviour
 		{
 			turret.Fire();
 		}
+	}
+
+	private void BonusesHandler()
+	{
+		if (Time.time > _boostBonusEndTime)
+		{
+			_boost = 1;
+		}
+	}
+
+	public void BoostBonus(float boost, float endTime)
+	{
+		_boost *= boost;
+		_boostBonusEndTime = endTime;
 	}
 }

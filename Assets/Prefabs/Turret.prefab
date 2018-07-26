@@ -52,6 +52,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4937589912713880}
   - component: {fileID: 114936230029806024}
+  - component: {fileID: 65755193301738736}
+  - component: {fileID: 114703257421349452}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -150,8 +152,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825440077458290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.43, y: -0.09, z: 80.77}
+  m_LocalRotation: {x: 0.022016436, y: 0.9994862, z: 0.012245345, w: 0.01981522}
+  m_LocalPosition: {x: 434.2, y: 36.56, z: 2136.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4180444219932048}
@@ -159,7 +161,7 @@ Transform:
   - {fileID: 4321570259726956}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.353, y: 177.69801, z: 2.551}
 --- !u!23 &23262159770483928
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -244,6 +246,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877769201587514}
   m_Mesh: {fileID: 4300104, guid: 476e729b4bdac9f4883b5ce072d19c38, type: 3}
+--- !u!65 &65755193301738736
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825440077458290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.150068, y: 5.913372, z: 7.010513}
+  m_Center: {x: -0.06475783, y: -1.0084959, z: 0.014491082}
+--- !u!114 &114703257421349452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825440077458290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9476c354079ad743883ffdc0ab1a995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
 --- !u!114 &114936230029806024
 MonoBehaviour:
   m_ObjectHideFlags: 1
