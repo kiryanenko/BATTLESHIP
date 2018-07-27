@@ -14,9 +14,6 @@ public class Shell : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		Instantiate(Explosion, transform.position, transform.rotation);
-		Destroy(gameObject);
-
 		var objHealth = collision.gameObject.GetComponent<Health>();
 		if (objHealth)
 		{
@@ -32,5 +29,9 @@ public class Shell : MonoBehaviour
 				health.Damage(Damage);
 			}
 		}
+		
+		var exposion =  Instantiate(Explosion, transform.position, transform.rotation);
+		Destroy(exposion, TimeLive);
+		Destroy(gameObject);
 	}
 }

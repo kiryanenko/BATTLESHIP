@@ -1,29 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TurretControls : MonoBehaviour
 {
+	public float ReloadTime;
+	public float Accuracy;
 	public Rigidbody ShellPrefab;
 	public Transform Barrel;
-
+	public float Caliber;
 	public float ShellVellocity = 100;
+
+	[Tooltip("Объекты по которым не будет вестись стрельба")]
+	public GameObject[] NonAimingObjects;
 	
 	private Quaternion _rot;
 	private bool _isFire;
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+	private float _reloadEndTime;
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		transform.rotation = _rot;
 	}
-
-	
 
 	public void Turn(Vector3 target)
 	{
@@ -39,14 +40,44 @@ public class TurretControls : MonoBehaviour
 	private void TurretFire()
 	{
 		if (!_isFire) return;
-		
-		var shell = Instantiate(ShellPrefab, Barrel.position, Barrel.rotation);
-		shell.velocity = transform.forward * ShellVellocity;
 		_isFire = false;
+
+		var now = Time.time;
+		if (now < _reloadEndTime) return;
+		if (!IsAimingObject()) return;
+
+		_reloadEndTime = now + ReloadTime;
+
+		var direction = Barrel.transform.forward;
+		direction.x += Random.Range(-Accuracy, Accuracy);
+		direction.y += Random.Range(-Accuracy, Accuracy);
+		var shell = Instantiate(ShellPrefab, Barrel.position, Quaternion.LookRotation(direction));
+		Debug.Log(direction);
+		Debug.Log(Barrel.transform.forward);
+		shell.velocity = direction * ShellVellocity;
 	}
 
 	public void Fire()
 	{
 		_isFire = true;
+	}
+
+	private bool IsAimingObject()
+	{
+		RaycastHit hit;
+		if (!Physics.BoxCast(
+			Barrel.transform.position,
+			new Vector3(Caliber, Caliber, Caliber),
+			Barrel.transform.forward,
+			out hit))
+		{
+			return true;
+		}
+		
+		Debug.Log(hit.transform.gameObject);
+		Debug.Log(gameObject);
+		Debug.Log(NonAimingObjects[0]);
+
+		return hit.transform.gameObject != gameObject && NonAimingObjects.All(obj => hit.transform.gameObject != obj);
 	}
 }
