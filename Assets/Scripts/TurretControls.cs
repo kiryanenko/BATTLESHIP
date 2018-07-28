@@ -52,8 +52,6 @@ public class TurretControls : MonoBehaviour
 		direction.x += Random.Range(-Accuracy, Accuracy);
 		direction.y += Random.Range(-Accuracy, Accuracy);
 		var shell = Instantiate(ShellPrefab, Barrel.position, Quaternion.LookRotation(direction));
-		Debug.Log(direction);
-		Debug.Log(Barrel.transform.forward);
 		shell.velocity = direction * ShellVellocity;
 	}
 
@@ -73,10 +71,6 @@ public class TurretControls : MonoBehaviour
 		{
 			return true;
 		}
-		
-		Debug.Log(hit.transform.gameObject);
-		Debug.Log(gameObject);
-		Debug.Log(NonAimingObjects[0]);
 
 		return hit.transform.gameObject != gameObject && NonAimingObjects.All(obj => hit.transform.gameObject != obj);
 	}

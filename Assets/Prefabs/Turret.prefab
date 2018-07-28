@@ -68,11 +68,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4420213970113480}
-  - component: {fileID: 114255271708076686}
   - component: {fileID: 65811336540817088}
+  - component: {fileID: 114255271708076686}
   - component: {fileID: 114404140791969488}
+  - component: {fileID: 114218478120115776}
   m_Layer: 0
-  m_Name: Turret (2)
+  m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,15 +113,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463706582899630}
-  m_LocalRotation: {x: 0.026172487, y: 0.9870317, z: -0.05368762, w: -0.14900044}
-  m_LocalPosition: {x: 488.56, y: 48.32, z: 2151.56}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3696.3, y: 38.2, z: 1901.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819156988633796}
   - {fileID: 4540682937095116}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 5.635, y: 197.361, z: 3.8990002}
+  m_LocalEulerAnglesHint: {x: 1.6470001, y: 238.74399, z: 6.6480002}
 --- !u!4 &4444051230436556
 Transform:
   m_ObjectHideFlags: 1
@@ -258,6 +259,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.150068, y: 5.913372, z: 7.010513}
   m_Center: {x: -0.06475783, y: -1.0084959, z: 0.014491082}
+--- !u!114 &114218478120115776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463706582899630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c48d33700da9a4297e9f9931aef655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionRadius: 5000
 --- !u!114 &114255271708076686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,9 +282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b771bb7ab9d4c90942305ef5e0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReloadTime: 2
+  Accuracy: 0.05
   ShellPrefab: {fileID: 54511858556589368, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
   Barrel: {fileID: 4279188906832052}
+  Caliber: 0
   ShellVellocity: 500
   NonAimingObjects: []
 --- !u!114 &114404140791969488
