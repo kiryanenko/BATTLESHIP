@@ -12,6 +12,8 @@ namespace UI
 
 		private void Start()
 		{
+			Cursor.visible = true;
+
 			ProgressBar.SetActive(false);
 			foreach (var btn in Buttons)
 			{

@@ -1431,6 +1431,7 @@ GameObject:
   - component: {fileID: 114763393271133884}
   - component: {fileID: 114438537816697126}
   - component: {fileID: 114424288064065086}
+  - component: {fileID: 195805037797628660}
   m_Layer: 0
   m_Name: ShipAI
   m_TagString: AI
@@ -6932,6 +6933,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionRadius: 4000
+  PatrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  DistanceForChangePatrolPoint: 500
 --- !u!114 &114438537816697126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7132,6 +7140,27 @@ CapsuleCollider:
   m_Height: 21.393951
   m_Direction: 1
   m_Center: {x: -0.77999973, y: 7.3728123, z: -2.6073723}
+--- !u!195 &195805037797628660
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748982495080256}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 50
+  m_Speed: 100
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 100
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198009111862929096
 ParticleSystem:
   m_ObjectHideFlags: 1
