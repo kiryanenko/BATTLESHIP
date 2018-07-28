@@ -1,30 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using ProgressBar;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour {
+	public GameObject Ship;
+	public ProgressBarBehaviour ProgressBar;
+	
 	private float _forwardAxis;
 	private float _sideAxis;
 
 	private Transform _camera;
-	public ShipControls Ship;
+	private ShipControls _shipControls;
 
 	// Use this for initialization
-	void Start ()
+	private void Start ()
 	{
 		_camera = Camera.main.transform;
+		_shipControls = Ship.GetComponent<ShipControls>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		Move();
 		Aiming();
 	}
 
+	private void LateUpdate()
+	{
+		UpdateHealth();
+	}
+
 	private void Move()
 	{
-		Ship.ForwardAxis = Input.GetAxis("Vertical");
-		Ship.SideAxis = Input.GetAxis("Horizontal");
+		_shipControls.ForwardAxis = Input.GetAxis("Vertical");
+		_shipControls.SideAxis = Input.GetAxis("Horizontal");
 	}
 
 	private void Aiming()
@@ -33,16 +41,27 @@ public class PlayerControls : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit))
 		{
-			Ship.Aim = hit.point;
+			_shipControls.Aim = hit.point;
 		}
 		else
 		{
-			Ship.Aim = _camera.forward * 10000 + _camera.position;
+			_shipControls.Aim = _camera.forward * 10000 + _camera.position;
 		}
 		
 		if (Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			Ship.FireTurrets();
+			_shipControls.FireTurrets();
 		}
+	}
+
+	private void UpdateHealth()
+	{
+		float healthProgress = 0;
+		if (Ship)
+		{
+			var health = Ship.GetComponent<Health>();
+			healthProgress = health.CurrentHealth / health.MaxHealth * 100;
+		}
+		ProgressBar.Value = healthProgress;
 	}
 }

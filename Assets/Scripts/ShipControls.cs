@@ -19,6 +19,8 @@ public class ShipControls : MonoBehaviour
 	private float _boostBonusEndTime;
 	private float _boost = 1;
 
+	private bool _destroyed;
+
 	
 	// Use this for initialization
 	private void Start ()
@@ -28,12 +30,16 @@ public class ShipControls : MonoBehaviour
 
 	private void Update()
 	{
+		if (_destroyed) return;
+
 		TurnTurrets();
 		BonusesHandler();
 	}
 
 	private void FixedUpdate()
 	{
+		if (_destroyed) return;
+
 		Move();
 		Turn();
 	}
@@ -60,6 +66,8 @@ public class ShipControls : MonoBehaviour
 	
 	public void FireTurrets()
 	{
+		if (_destroyed) return;
+
 		foreach (var turret in Turrets)
 		{
 			turret.Fire();
@@ -78,5 +86,12 @@ public class ShipControls : MonoBehaviour
 	{
 		_boost *= boost;
 		_boostBonusEndTime = endTime;
+	}
+
+	public void OnDie()
+	{
+		gameObject.tag = "Untagged";
+		_rigidbody.constraints = RigidbodyConstraints.None;
+		_destroyed = true;
 	}
 }
