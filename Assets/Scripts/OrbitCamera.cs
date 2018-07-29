@@ -9,14 +9,14 @@ public class OrbitCamera : MonoBehaviour {
 	
 	private float _rotX, _rotY;
 	private Vector3 _offset;
-	
-	void Start() {
+
+	private void Start() {
 		_rotY = transform.eulerAngles.y;
 		_offset = Target.position - transform.position;
 		Cursor.visible = false;
 	}
-	
-	void LateUpdate() {
+
+	private void LateUpdate() {
 		Zoom();
 		RotateCamera();
 	}

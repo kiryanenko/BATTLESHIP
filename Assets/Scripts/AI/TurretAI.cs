@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 namespace AI
 {
-	public class TurretAI : MonoBehaviour
+	public class TurretAI : NetworkBehaviour
 	{
 		public float ActionRadius = 1000;
 	
@@ -17,6 +18,8 @@ namespace AI
 		// Update is called once per frame
 		private void Update ()
 		{
+			if (!isServer) return;
+
 			var players = GameObject.FindGameObjectsWithTag("Player");
 			foreach (var player in players)
 			{

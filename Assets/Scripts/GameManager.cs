@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
 	public GameObject WinText;
 	public GameObject LoseText;
@@ -16,13 +17,19 @@ public class GameManager : MonoBehaviour
 	private void Start ()
 	{
 		_playerHealth = GetComponent<PlayerControls>().Ship.GetComponent<Health>();
-		WinText.SetActive(false);
+		
+		if (!WinText) WinText = GameObject.Find("WinText");
+		if (!LoseText) LoseText = GameObject.Find("LoseText");
+		
+			WinText.SetActive(false);
 		LoseText.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	private void LateUpdate ()
 	{
+		if (!isLocalPlayer) return;
+		
 		var enymes = GameObject.FindGameObjectsWithTag("AI");
 		if (enymes.Length == 0)
 		{

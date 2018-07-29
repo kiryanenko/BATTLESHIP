@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
 namespace AI
 {
-	public class ShipAI : MonoBehaviour {
+	public class ShipAI : NetworkBehaviour {
 		public float ActionRadius = 1000;
 
 		public Transform[] PatrolPoints;
@@ -23,6 +24,8 @@ namespace AI
 		// Update is called once per frame
 		private void Update ()
 		{
+			if (!isServer) return;
+			
 			FireOnPlayers();
 			Patrol();
 		}
@@ -61,6 +64,13 @@ namespace AI
 			}
 			
 			_agent.destination = PatrolPoints[_currentPoint].position;
+		}
+
+		public void onDie()
+		{
+			_agent.isStopped = true;
+			Destroy(_agent);
+			Destroy(this);
 		}
 	}
 }

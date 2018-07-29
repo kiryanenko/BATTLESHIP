@@ -72,6 +72,8 @@ GameObject:
   - component: {fileID: 114255271708076686}
   - component: {fileID: 114404140791969488}
   - component: {fileID: 114218478120115776}
+  - component: {fileID: 114627384285902594}
+  - component: {fileID: 114867713969322778}
   m_Layer: 0
   m_Name: Turret
   m_TagString: AI
@@ -270,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c48d33700da9a4297e9f9931aef655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionRadius: 5000
+  ActionRadius: 3000
 --- !u!114 &114255271708076686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,3 +304,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+  DestroyObjOnDie: 1
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114627384285902594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463706582899630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 202
+    i1: 60
+    i2: 245
+    i3: 105
+    i4: 178
+    i5: 27
+    i6: 214
+    i7: 4
+    i8: 75
+    i9: 14
+    i10: 89
+    i11: 5
+    i12: 104
+    i13: 26
+    i14: 108
+    i15: 73
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114867713969322778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463706582899630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1

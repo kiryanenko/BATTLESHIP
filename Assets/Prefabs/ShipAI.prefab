@@ -1432,6 +1432,8 @@ GameObject:
   - component: {fileID: 114438537816697126}
   - component: {fileID: 114424288064065086}
   - component: {fileID: 195805037797628660}
+  - component: {fileID: 114282310389126310}
+  - component: {fileID: 114261399778664240}
   m_Layer: 0
   m_Name: ShipAI
   m_TagString: AI
@@ -6921,6 +6923,59 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114261399778664240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748982495080256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114282310389126310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748982495080256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 137
+    i1: 215
+    i2: 78
+    i3: 183
+    i4: 242
+    i5: 57
+    i6: 80
+    i7: 164
+    i8: 201
+    i9: 242
+    i10: 84
+    i11: 52
+    i12: 111
+    i13: 220
+    i14: 8
+    i15: 43
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114424288064065086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6932,7 +6987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2267abf14b58e0940b5ce3b5e8cc43e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionRadius: 4000
+  ActionRadius: 2500
   PatrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -6967,8 +7022,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114424288064065086}
+        m_MethodName: onDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  CurrentHealth: 0
 --- !u!114 &114450932415556508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7068,6 +7135,7 @@ MonoBehaviour:
   - {fileID: 114943132363496966}
   - {fileID: 114685015195999222}
   - {fileID: 114450932415556508}
+  DestructionTime: 8
 --- !u!114 &114943132363496966
 MonoBehaviour:
   m_ObjectHideFlags: 1

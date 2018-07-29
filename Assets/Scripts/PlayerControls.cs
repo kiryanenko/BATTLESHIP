@@ -1,31 +1,52 @@
 ﻿using ProgressBar;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerControls : MonoBehaviour {
+public class PlayerControls : NetworkBehaviour {
 	public GameObject Ship;
-	public ProgressBarBehaviour ProgressBar;
+	public ProgressBarBehaviour HealthProgressBar;
 	
 	private float _forwardAxis;
 	private float _sideAxis;
 
-	private Transform _camera;
+	public Transform Camera;
 	private ShipControls _shipControls;
 
 	// Use this for initialization
 	private void Start ()
 	{
-		_camera = Camera.main.transform;
+		if (isLocalPlayer)
+		{
+			Camera.tag = "MainCamera";
+			Camera.GetComponent<Camera>().enabled = true;
+		}
+		else
+		{
+			Camera.GetComponent<Camera>().enabled = false;
+			Destroy(Camera.gameObject);
+			return;
+		}
+		
 		_shipControls = Ship.GetComponent<ShipControls>();
+
+		if (!HealthProgressBar)
+		{
+			HealthProgressBar = GameObject.Find("HealthProgressBar").GetComponent<ProgressBarBehaviour>();
+		}
 	}
 	
 	// Update is called once per frame
 	private void Update () {
+		if (!isLocalPlayer) return;
+		
 		Move();
 		Aiming();
 	}
 
 	private void LateUpdate()
 	{
+		if (!isLocalPlayer) return;
+
 		UpdateHealth();
 	}
 
@@ -37,7 +58,7 @@ public class PlayerControls : MonoBehaviour {
 
 	private void Aiming()
 	{
-		var ray = new Ray(_camera.position, _camera.forward);
+		var ray = new Ray(Camera.position, Camera.forward);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit))
 		{
@@ -45,12 +66,12 @@ public class PlayerControls : MonoBehaviour {
 		}
 		else
 		{
-			_shipControls.Aim = _camera.forward * 10000 + _camera.position;
+			_shipControls.Aim = Camera.forward * 10000 + Camera.position;
 		}
 		
 		if (Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			_shipControls.FireTurrets();
+			CmdFire(_shipControls.Aim);
 		}
 	}
 
@@ -62,6 +83,13 @@ public class PlayerControls : MonoBehaviour {
 			var health = Ship.GetComponent<Health>();
 			healthProgress = health.CurrentHealth / health.MaxHealth * 100;
 		}
-		ProgressBar.Value = healthProgress;
+		HealthProgressBar.Value = healthProgress;
+	}
+
+	[Command]
+	private void CmdFire(Vector3 aim)
+	{
+		_shipControls.Aim = aim;
+		_shipControls.FireTurrets();
 	}
 }

@@ -1,13 +1,14 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
 	public float MaxHealth = 100;
 	public bool DestroyObjOnDie = true;
 	public UnityEvent OnDie;
 
-	public float CurrentHealth { get; set; }
+	[SyncVar]
+	public float CurrentHealth;
 	
 	// Use this for initialization
 	private void Start ()

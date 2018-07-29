@@ -4,8 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class TurretControls : MonoBehaviour
+public class TurretControls : NetworkBehaviour
 {
 	public float ReloadTime;
 	public float Accuracy;
@@ -53,6 +54,7 @@ public class TurretControls : MonoBehaviour
 		direction.y += Random.Range(-Accuracy, Accuracy);
 		var shell = Instantiate(ShellPrefab, Barrel.position, Quaternion.LookRotation(direction));
 		shell.velocity = direction * ShellVellocity;
+		NetworkServer.Spawn(shell.gameObject);
 	}
 
 	public void Fire()
