@@ -6935,7 +6935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -6943,7 +6943,7 @@ MonoBehaviour:
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_InterpolateMovement: 4.01
 --- !u!114 &114282310389126310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6987,7 +6987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2267abf14b58e0940b5ce3b5e8cc43e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionRadius: 2500
+  ActionRadius: 1500
   PatrolPoints:
   - {fileID: 0}
   - {fileID: 0}

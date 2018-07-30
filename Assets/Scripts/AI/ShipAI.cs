@@ -45,7 +45,7 @@ namespace AI
 					if (hit.transform.gameObject != player) continue;
 				}
 
-				_ship.Aim = playerPosition;
+				_ship.TurnTurrets(playerPosition);
 				_ship.FireTurrets();
 				return;
 			}

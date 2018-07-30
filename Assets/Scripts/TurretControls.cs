@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TurretControls : NetworkBehaviour
+public class TurretControls : MonoBehaviour
 {
 	public float ReloadTime;
 	public float Accuracy;
@@ -18,31 +14,16 @@ public class TurretControls : NetworkBehaviour
 	[Tooltip("Объекты по которым не будет вестись стрельба")]
 	public GameObject[] NonAimingObjects;
 	
-	private Quaternion _rot;
-	private bool _isFire;
 	private float _reloadEndTime;
-	
-	// Update is called once per frame
-	private void Update () {
-		transform.rotation = _rot;
-	}
 
 	public void Turn(Vector3 target)
 	{
 		var relativePos = target - transform.position;
-		_rot = Quaternion.LookRotation(relativePos);
-	}
-	
-	private void FixedUpdate()
-	{
-		TurretFire();
+		transform.rotation = Quaternion.LookRotation(relativePos);
 	}
 
-	private void TurretFire()
+	public void Fire()
 	{
-		if (!_isFire) return;
-		_isFire = false;
-
 		var now = Time.time;
 		if (now < _reloadEndTime) return;
 		if (!IsAimingObject()) return;
@@ -55,11 +36,6 @@ public class TurretControls : NetworkBehaviour
 		var shell = Instantiate(ShellPrefab, Barrel.position, Quaternion.LookRotation(direction));
 		shell.velocity = direction * ShellVellocity;
 		NetworkServer.Spawn(shell.gameObject);
-	}
-
-	public void Fire()
-	{
-		_isFire = true;
 	}
 
 	private bool IsAimingObject()

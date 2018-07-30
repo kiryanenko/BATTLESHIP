@@ -15,6 +15,8 @@ public class PlayerControls : NetworkBehaviour {
 	// Use this for initialization
 	private void Start ()
 	{
+		_shipControls = Ship.GetComponent<ShipControls>();
+		
 		if (isLocalPlayer)
 		{
 			Camera.tag = "MainCamera";
@@ -27,8 +29,6 @@ public class PlayerControls : NetworkBehaviour {
 			return;
 		}
 		
-		_shipControls = Ship.GetComponent<ShipControls>();
-
 		if (!HealthProgressBar)
 		{
 			HealthProgressBar = GameObject.Find("HealthProgressBar").GetComponent<ProgressBarBehaviour>();
@@ -60,18 +60,20 @@ public class PlayerControls : NetworkBehaviour {
 	{
 		var ray = new Ray(Camera.position, Camera.forward);
 		RaycastHit hit;
+		Vector3 aim;
 		if (Physics.Raycast(ray, out hit))
 		{
-			_shipControls.Aim = hit.point;
+			aim = hit.point;
 		}
 		else
 		{
-			_shipControls.Aim = Camera.forward * 10000 + Camera.position;
+			aim = Camera.forward * 10000 + Camera.position;
 		}
+		_shipControls.TurnTurrets(aim);
 		
 		if (Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			CmdFire(_shipControls.Aim);
+			CmdFire(aim);
 		}
 	}
 
@@ -89,7 +91,7 @@ public class PlayerControls : NetworkBehaviour {
 	[Command]
 	private void CmdFire(Vector3 aim)
 	{
-		_shipControls.Aim = aim;
+		_shipControls.TurnTurrets(aim);
 		_shipControls.FireTurrets();
 	}
 }

@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c48d33700da9a4297e9f9931aef655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionRadius: 3000
+  ActionRadius: 2000
 --- !u!114 &114255271708076686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,6 +310,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  CurrentHealth: 0
 --- !u!114 &114627384285902594
 MonoBehaviour:
   m_ObjectHideFlags: 1

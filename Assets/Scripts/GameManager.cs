@@ -16,12 +16,14 @@ public class GameManager : NetworkBehaviour
 	// Use this for initialization
 	private void Start ()
 	{
+		if (!isLocalPlayer) return;
+		
 		_playerHealth = GetComponent<PlayerControls>().Ship.GetComponent<Health>();
 		
 		if (!WinText) WinText = GameObject.Find("WinText");
 		if (!LoseText) LoseText = GameObject.Find("LoseText");
 		
-			WinText.SetActive(false);
+		WinText.SetActive(false);
 		LoseText.SetActive(false);
 	}
 	

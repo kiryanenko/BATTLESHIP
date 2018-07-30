@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.Scripting.APIUpdating;
 
 public class ShipControls : NetworkBehaviour
 {
@@ -15,7 +12,6 @@ public class ShipControls : NetworkBehaviour
 
 	public float ForwardAxis { get; set; }
 	public float SideAxis { get; set; }
-	public Vector3 Aim { get; set; }
 
 	private Rigidbody _rigidbody;
 
@@ -37,7 +33,6 @@ public class ShipControls : NetworkBehaviour
 	{
 		if (_destroyed) return;
 
-		TurnTurrets();
 		BonusesHandler();
 	}
 
@@ -61,11 +56,11 @@ public class ShipControls : NetworkBehaviour
 		_rigidbody.AddRelativeTorque(Vector3.left * torque);
 	}
 
-	private void TurnTurrets()
+	public void TurnTurrets(Vector3 aim)
 	{
 		foreach (var turret in Turrets)
 		{
-			turret.Turn(Aim);
+			turret.Turn(aim);
 		}
 	}
 	
