@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 namespace UI
 {
-	public class ButtonEventManager : MonoBehaviour
+	public class MainMenu : MonoBehaviour
 	{
 		public GameObject[] Buttons;
 		public GameObject ProgressBar;
 
 		private void Start()
 		{
+			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 
 			ProgressBar.SetActive(false);

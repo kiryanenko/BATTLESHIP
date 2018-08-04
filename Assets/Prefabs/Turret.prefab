@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 114867713969322778}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: AI
+  m_TagString: Enyme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
     type: 2}
   Barrel: {fileID: 4279188906832052}
   Caliber: 0
-  ShellVellocity: 500
+  ShellVellocity: 700
   NonAimingObjects: []
 --- !u!114 &114404140791969488
 MonoBehaviour:

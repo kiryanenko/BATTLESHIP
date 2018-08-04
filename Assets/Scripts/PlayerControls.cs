@@ -4,35 +4,30 @@ using UnityEngine.Networking;
 
 public class PlayerControls : NetworkBehaviour {
 	public GameObject Ship;
-	public ProgressBarBehaviour HealthProgressBar;
+	public Transform TPSCamera;
 	
 	private float _forwardAxis;
 	private float _sideAxis;
 
-	public Transform Camera;
 	private ShipControls _shipControls;
 
 	// Use this for initialization
 	private void Start ()
 	{
 		_shipControls = Ship.GetComponent<ShipControls>();
+
+		if (!isLocalPlayer) return;
 		
-		if (isLocalPlayer)
+		foreach (var cam in Camera.allCameras)
 		{
-			Camera.tag = "MainCamera";
-			Camera.GetComponent<Camera>().enabled = true;
+			cam.tag = "Untagged";
+			cam.enabled = false;
 		}
-		else
-		{
-			Camera.GetComponent<Camera>().enabled = false;
-			Destroy(Camera.gameObject);
-			return;
-		}
-		
-		if (!HealthProgressBar)
-		{
-			HealthProgressBar = GameObject.Find("HealthProgressBar").GetComponent<ProgressBarBehaviour>();
-		}
+			
+		TPSCamera.tag = "MainCamera";
+		TPSCamera.GetComponent<Camera>().enabled = true;
+			
+		CustomNetworkManager.Instance.OnStartLocalPlayer(gameObject);
 	}
 	
 	// Update is called once per frame
@@ -43,13 +38,6 @@ public class PlayerControls : NetworkBehaviour {
 		Aiming();
 	}
 
-	private void LateUpdate()
-	{
-		if (!isLocalPlayer) return;
-
-		UpdateHealth();
-	}
-
 	private void Move()
 	{
 		_shipControls.ForwardAxis = Input.GetAxis("Vertical");
@@ -58,7 +46,7 @@ public class PlayerControls : NetworkBehaviour {
 
 	private void Aiming()
 	{
-		var ray = new Ray(Camera.position, Camera.forward);
+		var ray = new Ray(TPSCamera.position, TPSCamera.forward);
 		RaycastHit hit;
 		Vector3 aim;
 		if (Physics.Raycast(ray, out hit))
@@ -67,7 +55,7 @@ public class PlayerControls : NetworkBehaviour {
 		}
 		else
 		{
-			aim = Camera.forward * 10000 + Camera.position;
+			aim = TPSCamera.forward * 10000 + TPSCamera.position;
 		}
 		_shipControls.TurnTurrets(aim);
 		
@@ -75,17 +63,6 @@ public class PlayerControls : NetworkBehaviour {
 		{
 			CmdFire(aim);
 		}
-	}
-
-	private void UpdateHealth()
-	{
-		float healthProgress = 0;
-		if (Ship)
-		{
-			var health = Ship.GetComponent<Health>();
-			healthProgress = health.CurrentHealth / health.MaxHealth * 100;
-		}
-		HealthProgressBar.Value = healthProgress;
 	}
 
 	[Command]
