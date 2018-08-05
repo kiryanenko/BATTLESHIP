@@ -14,6 +14,8 @@ public class BattleGameManager : Singleton<BattleGameManager>
 	private bool _gameStarted;
 	private bool _gameFinished;
 	private float _timeLoadMainMenu;
+
+	public static readonly GameObjectPool Pool = new GameObjectPool();
 	
 	// Use this for initialization
 	private void Start ()
@@ -39,6 +41,7 @@ public class BattleGameManager : Singleton<BattleGameManager>
 
 		if (_gameFinished && Time.time > _timeLoadMainMenu)
 		{
+			NetworkManager.singleton.StopClient();
 			SceneManager.LoadScene("UI/MainMenu");
 		}
 	}
@@ -63,5 +66,10 @@ public class BattleGameManager : Singleton<BattleGameManager>
 	{
 		_loseText.SetActive(true);
 		FinishGame();
+	}
+
+	private void OnDestroy()
+	{
+		Pool.Clear();
 	}
 }

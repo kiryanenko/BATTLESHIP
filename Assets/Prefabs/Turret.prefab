@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReloadTime: 2
   Accuracy: 0.05
-  ShellPrefab: {fileID: 54511858556589368, guid: b3e6572b69e833742898f31791a77ab9,
+  ShellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
   Barrel: {fileID: 4279188906832052}
   Caliber: 0

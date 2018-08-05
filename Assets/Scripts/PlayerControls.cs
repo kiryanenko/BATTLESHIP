@@ -1,10 +1,9 @@
-﻿using ProgressBar;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerControls : NetworkBehaviour {
 	public GameObject Ship;
-	public Transform TPSCamera;
+	public Transform TpsCamera;
 	
 	private float _forwardAxis;
 	private float _sideAxis;
@@ -24,8 +23,8 @@ public class PlayerControls : NetworkBehaviour {
 			cam.enabled = false;
 		}
 			
-		TPSCamera.tag = "MainCamera";
-		TPSCamera.GetComponent<Camera>().enabled = true;
+		TpsCamera.tag = "MainCamera";
+		TpsCamera.GetComponent<Camera>().enabled = true;
 			
 		CustomNetworkManager.Instance.OnStartLocalPlayer(gameObject);
 	}
@@ -46,7 +45,7 @@ public class PlayerControls : NetworkBehaviour {
 
 	private void Aiming()
 	{
-		var ray = new Ray(TPSCamera.position, TPSCamera.forward);
+		var ray = new Ray(TpsCamera.position, TpsCamera.forward);
 		RaycastHit hit;
 		Vector3 aim;
 		if (Physics.Raycast(ray, out hit))
@@ -55,7 +54,7 @@ public class PlayerControls : NetworkBehaviour {
 		}
 		else
 		{
-			aim = TPSCamera.forward * 10000 + TPSCamera.position;
+			aim = TpsCamera.forward * 10000 + TpsCamera.position;
 		}
 		_shipControls.TurnTurrets(aim);
 		

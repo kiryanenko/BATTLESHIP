@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using Utils;
 
 public class TurretControls : MonoBehaviour
 {
 	public float ReloadTime;
 	public float Accuracy;
-	public Rigidbody ShellPrefab;
+	public GameObject ShellPrefab;
 	public Transform Barrel;
 	public float Caliber;
 	public float ShellVellocity = 100;
@@ -33,8 +34,11 @@ public class TurretControls : MonoBehaviour
 		var direction = Barrel.transform.forward;
 		direction.x += Random.Range(-Accuracy, Accuracy);
 		direction.y += Random.Range(-Accuracy, Accuracy);
-		var shell = Instantiate(ShellPrefab, Barrel.position, Quaternion.LookRotation(direction));
-		shell.velocity = direction * ShellVellocity;
+
+		var shell = BattleGameManager.Pool.Take(ShellPrefab);
+		shell.transform.position = Barrel.position;
+		shell.transform.rotation = Quaternion.LookRotation(direction);
+		shell.GetComponent<Rigidbody>().velocity = direction * ShellVellocity;
 		NetworkServer.Spawn(shell.gameObject);
 	}
 
