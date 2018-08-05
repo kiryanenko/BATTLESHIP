@@ -15,18 +15,23 @@ public class PlayerControls : NetworkBehaviour {
 	{
 		_shipControls = Ship.GetComponent<ShipControls>();
 
-		if (!isLocalPlayer) return;
-		
-		foreach (var cam in Camera.allCameras)
+		if (isLocalPlayer)
 		{
-			cam.tag = "Untagged";
-			cam.enabled = false;
+			foreach (var cam in Camera.allCameras)
+			{
+				cam.tag = "Untagged";
+				cam.enabled = false;
+			}
+
+			TpsCamera.tag = "MainCamera";
+			TpsCamera.GetComponent<Camera>().enabled = true;
+
+			CustomNetworkManager.Instance.OnStartLocalPlayer(gameObject);
 		}
-			
-		TpsCamera.tag = "MainCamera";
-		TpsCamera.GetComponent<Camera>().enabled = true;
-			
-		CustomNetworkManager.Instance.OnStartLocalPlayer(gameObject);
+		else
+		{
+			TpsCamera.GetComponent<Camera>().enabled = false;
+		}
 	}
 	
 	// Update is called once per frame

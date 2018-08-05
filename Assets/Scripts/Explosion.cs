@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-	public float LiveTime = 5f;
+	[SerializeField] private float _liveTime = 5f;
+
+	private float _endLiveTime;
 	
 	// Use this for initialization
-	void Start () {
-		if (LiveTime >= 0)
+	private void OnEnable()
+	{
+		_endLiveTime = Time.time + _liveTime;
+	}
+
+	private void Update()
+	{
+		if (Time.time > _endLiveTime)
 		{
-			Destroy(gameObject, LiveTime);
+			BattleGameManager.Pool.Release(gameObject);
 		}
 	}
 }

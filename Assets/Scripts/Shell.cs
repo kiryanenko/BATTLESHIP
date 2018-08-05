@@ -4,22 +4,24 @@ public class Shell : MonoBehaviour
 {
 	public float Damage = 50;
 	public float DamageRadius = 5;
-	public float TimeLive = 3f;
-	public GameObject Explosion;
+	[SerializeField] private float _timeLive = 3f;
+	[SerializeField] private GameObject _explosion;
 
 	private float _endLiveTime;
 	
 	// Use this for initialization
 	private void OnEnable()
 	{
-		_endLiveTime = Time.time + TimeLive;
+		_endLiveTime = Time.time + _timeLive;
 	}
 
 	private void Update()
 	{
 		if (Time.time > _endLiveTime)
 		{
-			BattleGameManager.Pool.Release(gameObject);
+			// FIXME: Game object pool
+			// BattleGameManager.Pool.Release(gameObject);
+			Destroy(gameObject);
 		}
 	}
 
@@ -40,9 +42,14 @@ public class Shell : MonoBehaviour
 				health.Damage(Damage);
 			}
 		}
-		
-		var exposion =  Instantiate(Explosion, transform.position, transform.rotation);
-		Destroy(exposion, TimeLive);
-		BattleGameManager.Pool.Release(gameObject);		
+
+		var explosion = BattleGameManager.Pool.Take(_explosion);
+		explosion.transform.position = transform.position;
+		explosion.transform.rotation = transform.rotation;
+//		var exposion =  Instantiate(Explosion, transform.position, transform.rotation);
+//		Destroy(exposion, TimeLive);
+		// FIXME: Game object pool
+		// BattleGameManager.Pool.Release(gameObject);
+		Destroy(gameObject);
 	}
 }

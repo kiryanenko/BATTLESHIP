@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.34002686, y: 0.34563732, z: 1.9416504}
-  m_Center: {x: -0.004119873, y: -0.00000047683716, z: -0.4708252}
+  m_Size: {x: 0.34002686, y: 0.34563732, z: 1.2055664}
+  m_Center: {x: -0.004119873, y: -0.00000047683716, z: 0.6031494}
 --- !u!108 &108758713819362976
 Light:
   m_ObjectHideFlags: 1
@@ -122,15 +122,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.033333335
+  m_SendInterval: 0.055555556
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
-  m_MovementTheshold: 0.001
+  m_MovementTheshold: 1
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_InterpolateMovement: 50
 --- !u!114 &114449585131804840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,9 +175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 50
-  DamageRadius: 5
-  TimeLive: 5
-  Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  DamageRadius: 20
+  _timeLive: 3
+  _explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
 --- !u!120 &120126611040857164
 LineRenderer:
   m_ObjectHideFlags: 1

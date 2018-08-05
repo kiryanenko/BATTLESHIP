@@ -7036,13 +7036,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b771bb7ab9d4c90942305ef5e0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReloadTime: 0.5
-  Accuracy: 0.015
-  ShellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
+  _reloadTime: 0.5
+  _accuracy: 0.03
+  _shellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
-  Barrel: {fileID: 4713135610354396}
-  Caliber: 1
-  ShellVellocity: 700
+  _barrel: {fileID: 4713135610354396}
+  _caliber: 1
+  _shellVellocity: 700
   NonAimingObjects:
   - {fileID: 1281612342069534}
 --- !u!114 &114146913829667962
@@ -7076,13 +7076,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b771bb7ab9d4c90942305ef5e0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReloadTime: 0.5
-  Accuracy: 0.015
-  ShellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
+  _reloadTime: 0.5
+  _accuracy: 0.03
+  _shellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
-  Barrel: {fileID: 4296284723639410}
-  Caliber: 1
-  ShellVellocity: 700
+  _barrel: {fileID: 4296284723639410}
+  _caliber: 1
+  _shellVellocity: 700
   NonAimingObjects:
   - {fileID: 1281612342069534}
 --- !u!114 &114167040213601562
@@ -7096,13 +7096,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b771bb7ab9d4c90942305ef5e0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReloadTime: 0.5
-  Accuracy: 0.015
-  ShellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
+  _reloadTime: 0.5
+  _accuracy: 0.03
+  _shellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
-  Barrel: {fileID: 4230159032892608}
-  Caliber: 1
-  ShellVellocity: 700
+  _barrel: {fileID: 4230159032892608}
+  _caliber: 1
+  _shellVellocity: 700
   NonAimingObjects:
   - {fileID: 1281612342069534}
 --- !u!114 &114182355050013886
@@ -7117,7 +7117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.033333335
+  m_SendInterval: 0.0625
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -7137,13 +7137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b771bb7ab9d4c90942305ef5e0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReloadTime: 0.5
-  Accuracy: 0.015
-  ShellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
+  _reloadTime: 0.5
+  _accuracy: 0.03
+  _shellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
-  Barrel: {fileID: 4025132300266350}
-  Caliber: 1
-  ShellVellocity: 700
+  _barrel: {fileID: 4025132300266350}
+  _caliber: 1
+  _shellVellocity: 700
   NonAimingObjects:
   - {fileID: 1281612342069534}
 --- !u!114 &114255609195622778
@@ -7157,13 +7157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b771bb7ab9d4c90942305ef5e0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReloadTime: 0.5
-  Accuracy: 0.015
-  ShellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
+  _reloadTime: 0.5
+  _accuracy: 0.03
+  _shellPrefab: {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9,
     type: 2}
-  Barrel: {fileID: 4436440784959718}
-  Caliber: 1
-  ShellVellocity: 700
+  _barrel: {fileID: 4436440784959718}
+  _caliber: 1
+  _shellVellocity: 700
   NonAimingObjects:
   - {fileID: 1281612342069534}
 --- !u!114 &114483744275610034

@@ -5,12 +5,12 @@ using Utils;
 
 public class TurretControls : MonoBehaviour
 {
-	public float ReloadTime;
-	public float Accuracy;
-	public GameObject ShellPrefab;
-	public Transform Barrel;
-	public float Caliber;
-	public float ShellVellocity = 100;
+	[SerializeField] private float _reloadTime = 0.5f;
+	[SerializeField] private float _accuracy = 0.002f;
+	[SerializeField] private GameObject _shellPrefab;
+	[SerializeField] private Transform _barrel;
+	[SerializeField] private float _caliber = 1;
+	[SerializeField] private float _shellVellocity = 700;
 
 	[Tooltip("Объекты по которым не будет вестись стрельба")]
 	public GameObject[] NonAimingObjects;
@@ -29,16 +29,18 @@ public class TurretControls : MonoBehaviour
 		if (now < _reloadEndTime) return;
 		if (!IsAimingObject()) return;
 
-		_reloadEndTime = now + ReloadTime;
+		_reloadEndTime = now + _reloadTime;
 
-		var direction = Barrel.transform.forward;
-		direction.x += Random.Range(-Accuracy, Accuracy);
-		direction.y += Random.Range(-Accuracy, Accuracy);
+		var direction = _barrel.transform.forward;
+		direction.x += Random.Range(-_accuracy, _accuracy);
+		direction.y += Random.Range(-_accuracy, _accuracy);
 
-		var shell = BattleGameManager.Pool.Take(ShellPrefab);
-		shell.transform.position = Barrel.position;
+		// FIXME: Object pool
+		// var shell = BattleGameManager.Pool.Take(ShellPrefab);
+		var shell = Instantiate(_shellPrefab);
+		shell.transform.position = _barrel.position;
 		shell.transform.rotation = Quaternion.LookRotation(direction);
-		shell.GetComponent<Rigidbody>().velocity = direction * ShellVellocity;
+		shell.GetComponent<Rigidbody>().velocity = direction * _shellVellocity;
 		NetworkServer.Spawn(shell.gameObject);
 	}
 
@@ -46,9 +48,9 @@ public class TurretControls : MonoBehaviour
 	{
 		RaycastHit hit;
 		if (!Physics.BoxCast(
-			Barrel.transform.position,
-			new Vector3(Caliber, Caliber, Caliber),
-			Barrel.transform.forward,
+			_barrel.transform.position,
+			new Vector3(_caliber, _caliber, _caliber),
+			_barrel.transform.forward,
 			out hit))
 		{
 			return true;
