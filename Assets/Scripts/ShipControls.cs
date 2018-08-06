@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using Bonuses;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class ShipControls : NetworkBehaviour
 {
-	public float Thrust = 100;
-	public float Torque = 5;
+	[SerializeField] private float _thrust = 600;
+	[SerializeField] private float _torque = 3000;
 
 	public TurretControls[] Turrets;
+	[SerializeField] private BonusController _bonusController;
 
 	public float DestructionTime = 8;
 
@@ -16,24 +18,14 @@ public class ShipControls : NetworkBehaviour
 	private Rigidbody _rigidbody;
 
 	[SyncVar]
-	private float _boostBonusEndTime;
-	[SyncVar]
-	private float _boost = 1;
-	[SyncVar]
 	private bool _destroyed;
-
+	
 	
 	// Use this for initialization
 	private void Start ()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
-	}
-
-	private void Update()
-	{
-		if (_destroyed) return;
-
-		BonusesHandler();
+		if (!_bonusController) GetComponent<BonusController>();
 	}
 
 	private void FixedUpdate()
@@ -46,13 +38,14 @@ public class ShipControls : NetworkBehaviour
 
 	private void Move()
 	{
-		var trust = Thrust * ForwardAxis * _boost;
+		var trust = _thrust * ForwardAxis;
+		if (_bonusController) trust *= _bonusController.Boost;
 		_rigidbody.AddRelativeForce(Vector3.forward * trust);
 	}
 
 	private void Turn()
 	{
-		var torque = Torque * SideAxis * _rigidbody.velocity.magnitude + Torque * SideAxis;
+		var torque = _torque * SideAxis * _rigidbody.velocity.magnitude + _torque * SideAxis;
 		_rigidbody.AddRelativeTorque(Vector3.left * torque);
 	}
 
@@ -72,20 +65,6 @@ public class ShipControls : NetworkBehaviour
 		{
 			turret.Fire();
 		}
-	}
-
-	private void BonusesHandler()
-	{
-		if (Time.time > _boostBonusEndTime)
-		{
-			_boost = 1;
-		}
-	}
-
-	public void BoostBonus(float boost, float endTime)
-	{
-		_boost *= boost;
-		_boostBonusEndTime = endTime;
 	}
 
 	public void OnDie()

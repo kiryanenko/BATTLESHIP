@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4190438308353572}
   - component: {fileID: 33952122518312546}
-  - component: {fileID: 64507431362081440}
   m_Layer: 0
   m_Name: chestClosed_bronze_col
   m_TagString: Untagged
@@ -40,6 +39,8 @@ GameObject:
   - component: {fileID: 23776498984188764}
   - component: {fileID: 65173586003364276}
   - component: {fileID: 114541741044424334}
+  - component: {fileID: 95812084026479936}
+  - component: {fileID: 114257082470527288}
   m_Layer: 0
   m_Name: BoostBonus
   m_TagString: Untagged
@@ -66,8 +67,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213729413453692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 852.37573, y: -1.7, z: 1262.194}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: -2305.601, y: -245.7, z: -2074.1604}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4190438308353572}
@@ -123,20 +124,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097878770771984}
   m_Mesh: {fileID: 4300000, guid: 841a85914e7938a4fab0a3a24a5c4b9a, type: 3}
---- !u!64 &64507431362081440
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1097878770771984}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 841a85914e7938a4fab0a3a24a5c4b9a, type: 3}
 --- !u!65 &65173586003364276
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -149,6 +136,56 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8387347, y: 1.0562375, z: 1.7880145}
   m_Center: {x: -0.21078429, y: 0.18360752, z: 0.13191408}
+--- !u!95 &95812084026479936
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213729413453692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a08994e312bfc49438f9bce98c073ed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114257082470527288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213729413453692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 13
+    i1: 226
+    i2: 149
+    i3: 47
+    i4: 243
+    i5: 2
+    i6: 21
+    i7: 116
+    i8: 72
+    i9: 240
+    i10: 251
+    i11: 71
+    i12: 209
+    i13: 200
+    i14: 154
+    i15: 185
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114541741044424334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,5 +197,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8cf9dbd23133a4ea58e9544354bf0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boost: 2
+  Boost: 1.5
   ActionTime: 15

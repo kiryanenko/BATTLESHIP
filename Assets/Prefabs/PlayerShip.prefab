@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 114146913829667962}
   - component: {fileID: 114639862470891190}
   - component: {fileID: 114805755770706752}
+  - component: {fileID: 114213990975358472}
   - component: {fileID: 114713852252358136}
   - component: {fileID: 114182355050013886}
   - component: {fileID: 114072118792698804}
@@ -7056,15 +7057,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4904bf2708dda44d189df003507361ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Thrust: 600
-  Torque: 3000
+  _thrust: 600
+  _torque: 3000
   Turrets:
   - {fileID: 114255609195622778}
   - {fileID: 114114167649225070}
   - {fileID: 114161200984154506}
   - {fileID: 114167040213601562}
   - {fileID: 114183323183144768}
-  DestructionTime: 8
+  _bonusController: {fileID: 114213990975358472}
+  DestructionTime: 15
 --- !u!114 &114161200984154506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7146,6 +7148,18 @@ MonoBehaviour:
   _shellVellocity: 700
   NonAimingObjects:
   - {fileID: 1281612342069534}
+--- !u!114 &114213990975358472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281612342069534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e698a71e7de1e3468d794bfa254136e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 114639862470891190}
 --- !u!114 &114255609195622778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7233,6 +7247,10 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  DieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DieEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   CurrentHealth: 0
 --- !u!114 &114713852252358136
 MonoBehaviour:

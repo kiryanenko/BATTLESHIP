@@ -15,7 +15,7 @@ public class OrbitCamera : MonoBehaviour {
 		_offset = Target.position - transform.position;
 	}
 
-	private void LateUpdate() {
+	private void Update() {
 		Zoom();
 		RotateCamera();
 	}
