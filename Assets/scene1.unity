@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44046888, g: 0.48907053, b: 0.5692232, a: 1}
+  m_IndirectSpecularColor: {r: 0.44046903, g: 0.489071, b: 0.5692239, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -494,10 +494,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99421c2c587c92449314742c117242d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 1825665934}
   _networkHud: {fileID: 517063814}
   _gameMenu: {fileID: 459326547}
   _isGameMenuActive: 1
-  _healthBar: {fileID: 1444027264}
+  _playerHealthBar: {fileID: 1444027264}
+  _HealthBarPrefab: {fileID: 109282, guid: 60da1df1f7edb3747bea8f735b2768d1, type: 2}
+  HealthBarDistance: 2000
 --- !u!4 &161245057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4420213970113480, guid: ca3cf569b21bd6044b0e5905681a6c49,
@@ -1442,8 +1445,8 @@ MonoBehaviour:
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
-  m_OfflineScene: MainMenu
-  m_OnlineScene: scene1
+  m_OfflineScene: 
+  m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1536786468175794, guid: b3e6572b69e833742898f31791a77ab9, type: 2}
   m_CustomConfig: 0

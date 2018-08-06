@@ -1,11 +1,18 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
+
+[System.Serializable]
+public class DieEvent : UnityEvent<GameObject>
+{
+}
 
 public class Health : NetworkBehaviour
 {
 	public float MaxHealth = 100;
 	public bool DestroyObjOnDie = true;
 	public UnityEvent OnDie;
+	public DieEvent DieEvent;
 
 	[SyncVar]
 	public float CurrentHealth;
@@ -20,8 +27,10 @@ public class Health : NetworkBehaviour
 	{
 		if (!(CurrentHealth < 0)) return;
 		
-		if (DestroyObjOnDie) Destroy(gameObject);
+		DieEvent.Invoke(gameObject);
 		OnDie.Invoke();
+		
+		if (DestroyObjOnDie) Destroy(gameObject);
 	}
 
 	public void Damage(float damage)
