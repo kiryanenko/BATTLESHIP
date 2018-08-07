@@ -4,9 +4,6 @@ using UnityEngine.Networking;
 public class PlayerControls : NetworkBehaviour {
 	public GameObject Ship;
 	public Transform TpsCamera;
-	
-	private float _forwardAxis;
-	private float _sideAxis;
 
 	private ShipControls _shipControls;
 

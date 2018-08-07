@@ -405,19 +405,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4512237672775382}
   - component: {fileID: 65025858466490338}
-  - component: {fileID: 65352684632997092}
-  - component: {fileID: 65244960773631360}
-  - component: {fileID: 65958494604322912}
-  - component: {fileID: 136516410480421438}
-  - component: {fileID: 65805903513998488}
-  - component: {fileID: 136578509745526906}
-  - component: {fileID: 136257796294502322}
-  - component: {fileID: 65831203852301450}
-  - component: {fileID: 136896048981426148}
   - component: {fileID: 54346946436699252}
+  - component: {fileID: 114805755770706752}
   - component: {fileID: 114146913829667962}
   - component: {fileID: 114639862470891190}
-  - component: {fileID: 114805755770706752}
   - component: {fileID: 114213990975358472}
   - component: {fileID: 114713852252358136}
   - component: {fileID: 114182355050013886}
@@ -426,6 +417,15 @@ GameObject:
   - component: {fileID: 114858051651058686}
   - component: {fileID: 114573362485363482}
   - component: {fileID: 114483744275610034}
+  - component: {fileID: 136896048981426148}
+  - component: {fileID: 136257796294502322}
+  - component: {fileID: 65352684632997092}
+  - component: {fileID: 65244960773631360}
+  - component: {fileID: 65958494604322912}
+  - component: {fileID: 136516410480421438}
+  - component: {fileID: 65805903513998488}
+  - component: {fileID: 136578509745526906}
+  - component: {fileID: 65831203852301450}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player

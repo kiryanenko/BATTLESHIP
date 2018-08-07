@@ -49,6 +49,7 @@ namespace Utils
         public void Clear()
         {
             _freeInstances.Clear();
+            _instances.Clear();
         }
     }
 }
