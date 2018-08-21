@@ -46,8 +46,6 @@ public class Shell : MonoBehaviour
 		var explosion = BattleGameManager.Pool.Take(_explosion);
 		explosion.transform.position = transform.position;
 		explosion.transform.rotation = transform.rotation;
-//		var exposion =  Instantiate(Explosion, transform.position, transform.rotation);
-//		Destroy(exposion, TimeLive);
 		// FIXME: Game object pool
 		// BattleGameManager.Pool.Release(gameObject);
 		Destroy(gameObject);
